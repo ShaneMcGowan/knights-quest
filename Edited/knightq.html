@@ -1,0 +1,379 @@
+<html>
+<head>
+<title>Knight's Quest:  Online Fantasy RPG</title>
+
+<meta name="description" content="A free single-player online fantasy RPG game with graphics.  Play for free on the internet.  The game is written with javascript.">
+
+<meta name="keywords" content="online games, web, game,web-based, webgame, internet, RPG, free games, role playing, video, computer, fantasy, medieval, text game, single player,">
+
+<script language="javascript" src="rpgscript.js"></script>
+<script language="javascript">
+var mebeogd = 0;
+var moreexp = 0;
+</script>
+</head>
+
+
+<body bgcolor="#DDDDDD" onLoad=loadit()>
+
+<BR>
+<B><font size="6"><u><center>Knight's Quest v2.4</center></u></font></b>
+<BR><BR><BR>
+
+
+<B><font size="4"><U>Creating a character</u></font></b><BR>
+<form name="formb">
+<font size="+1" face="Arial">Name:</font> <input type="text" value="John Doe" name="yname" style="border-style: solid; background-color: #DDDDDD; font-family: Arial;">
+<BR>
+<B>Race</b><BR>
+<input name="pick1" type="radio" onClick=race1()> Human<BR>
+<input name="pick2" type="radio" onClick=race2()> Elf<BR>
+<input name="pick3" type="radio" onClick=race3()> Dwarf<BR>
+<input name="pick4" type="radio" onClick=race4()> Halfling<BR>
+<BR>
+<B>Class</b><BR>
+<input name="c1" type="radio" onClick=pclass1()>Fighter<BR>
+<input name="c2" type="radio" onClick=pclass2()>Thief<BR>
+<input name="c3" type="radio" onClick=pclass3()>Mage<BR>
+<input name="c4" type="radio" onClick=pclass4()>Cleric<BR>
+<BR>
+<B>Attributes</B>
+<table border="2">
+<tr>
+<td>Strength</td>
+<td><input type="text" size="3" name="s" onFocus="document.formb.s.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+<td>
+<input type="button" value="  +  " onClick=ys()>
+<input type="button" value="  -  " onClick=ns()>
+</td>
+
+</tr><tr>
+<td>Endurance</td>
+<td><input type="text" size="3" name="e" onFocus="document.formb.e.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+<td>
+<input type="button" value="  +  " onClick=ye()>
+<input type="button" value="  -  " onClick=ne()>
+</td>
+
+
+</tr><tr>
+<td>Agility</td>
+<td><input type="text" size="3" name="a" onFocus="document.formb.a.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+<td>
+<input type="button" value="  +  " onClick=ya()>
+<input type="button" value="  -  " onClick=na()>
+</td>
+
+</tr><tr>
+<td>Magic</td>
+<td><input type="text" size="3" name="m" onFocus="document.formb.m.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+<td>
+<input type="button" value="  +  " onClick=ym()>
+<input type="button" value="  -  " onClick=nm()>
+</td>
+
+</tr><tr>
+<td>Points Left</td>
+<td><input type="text" size="3" name="left" onFocus="document.formb.left.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+<td></td>
+</tr></table>
+<input type="button" value="Create Character" onClick=create()>
+
+</form>
+
+<hr size="5" color="#009900">
+<BR>
+<B><U><font size="4">The Game</font></u></b><BR><BR>
+
+<a name="game">
+<TABLE border="2" cellpadding="2">
+<TR>
+<TD COLSPAN="2" valign="bottom">
+
+<table border="0" width="100%">
+<tr>
+<td><B><font size="4" face="Arial">Knight's Quest v2.4</font></b></td>
+<td>
+<form>
+<input type="button" value="Save Game" onClick="setSave()">
+<input type="button" value="Load Game" onClick="setLoad()">
+</form>
+</td>
+<td>
+<form name="cheats">
+<input name="exp" type="checkbox" onClick="goodexp = document.cheats.exp.checked">Better Exp
+<input name="ogd" type="checkbox" onClick="mebeogd = document.cheats.ogd.checked">OGd Mode
+</form>
+</td>
+</tr>
+</table>
+
+
+</TD>
+<TD>
+//Need Ad
+&nbsp;
+</TD>
+
+</TR><TR>
+<TD rowspan="2" valign="top">
+<form name="gear">
+<center>
+<img name="weaponpic" src="weapon/saber.gif">
+<img name="shieldpic" src="weapon/shields/sh01.gif">
+</center>
+<table><tr>
+<td>Weapon:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><input type="text" size="17" name="wname" onFocus="document.gear.wname.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+<td><input type="text" size="4" name="wstat" onFocus="document.gear.wstat.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+</tr><tr>
+<td>Armor:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><input type="text" size="17" name="aname" onFocus="document.gear.aname.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+<td><input type="text" size="4" name="astat" onFocus="document.gear.astat.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+</tr><tr>
+<td>Shield:&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><input type="text" size="17" name="sname" onFocus="document.gear.sname.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+<td><input type="text" size="4" name="sstat" onFocus="document.gear.sstat.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+</tr></table>
+</form>
+
+<form name="stat2">
+<table><tr>
+<td>Experience:</td>
+<td>
+<img src="pic/number/b.gif" name="exp0">
+<img src="pic/number/b.gif" name="exp1">
+<img src="pic/number/b.gif" name="exp2">
+<img src="pic/number/b.gif" name="exp3">
+<img src="pic/number/b.gif" name="exp4">
+<img src="pic/number/b.gif" name="exp5">
+<img src="pic/number/b.gif" name="exp6">
+<img src="pic/number/b.gif" name="exp7">
+<img src="pic/number/b.gif" name="exp8">
+<img src="pic/number/b.gif" name="exp9">
+</td>
+</tr><tr>
+<td>Next Level:</td>
+<td>
+<img src="pic/number/b.gif" name="nlev0">
+<img src="pic/number/b.gif" name="nlev1">
+<img src="pic/number/b.gif" name="nlev2">
+<img src="pic/number/b.gif" name="nlev3">
+<img src="pic/number/b.gif" name="nlev4">
+<img src="pic/number/b.gif" name="nlev5">
+<img src="pic/number/b.gif" name="nlev6">
+<img src="pic/number/b.gif" name="nlev7">
+<img src="pic/number/b.gif" name="nlev8">
+<img src="pic/number/b.gif" name="nlev9">
+</td>
+</tr></table>
+</form>
+
+<form name="qu">
+Quest:<BR>
+<textarea name="review" cols="28" rows="5" wrap="virtual" onFocus="document.qu.review.blur()" style="background-color: #DDDDDD;"></textarea>
+</form>
+</TD>
+
+<TD><img width="250" height="250" name="monster" src="pic/inside.gif"></TD>
+
+<TD rowspan="2">
+<form name="stat3">
+<table border="2">
+<tr>
+<td colspan="2"><B><center>Vital Stats</center></b></td>
+</tr><tr>
+<td>HP:</td> 
+<td>
+<img src="pic/number/b.gif" name="chp0">
+<img src="pic/number/b.gif" name="chp1">
+<img src="pic/number/b.gif" name="chp2">
+<img src="pic/number/b.gif" name="chp3">
+<img src="pic/number/b.gif" name="chp4"> / 
+<img src="pic/number/b.gif" name="mhp0">
+<img src="pic/number/b.gif" name="mhp1">
+<img src="pic/number/b.gif" name="mhp2">
+<img src="pic/number/b.gif" name="mhp3">
+<img src="pic/number/b.gif" name="mhp4">
+</td>
+</tr><tr>
+<td>MP:</td>
+<td> 
+<img src="pic/number/b.gif" name="cmp0">
+<img src="pic/number/b.gif" name="cmp1">
+<img src="pic/number/b.gif" name="cmp2">
+<img src="pic/number/b.gif" name="cmp3">
+<img src="pic/number/b.gif" name="cmp4"> / 
+<img src="pic/number/b.gif" name="mmp0">
+<img src="pic/number/b.gif" name="mmp1">
+<img src="pic/number/b.gif" name="mmp2">
+<img src="pic/number/b.gif" name="mmp3">
+<img src="pic/number/b.gif" name="mmp4">
+</td>
+</tr></table>
+</form>
+
+
+<form name="spells">
+<table border="2">
+<tr>
+<td><B><center>Magic Select</center></b></td>
+</tr><tr>
+<td>
+<select name="type" onChange="magicselect()" style="background-color: #DDDDDD;">
+<option value="0">-SELECT A SPELL-
+<option value="0">
+<option value="0">-WHITE MAGIC-
+<option value="1">Heal (10mp)
+<option value="9">Heal2 (25mp)
+<option value="14">Heal3 (50mp)
+<option value="15">Sleep (15mp)
+<option value="16">Paralyze (30mp)
+<option value="12">Protect (35mp)
+<option value="13">Barrier (35mp)
+<option value="19">Attack Up (40mp)
+<option value="18">Analyze (5mp)
+<option value="0">
+<option value="0">-BLACK MAGIC-
+<option value="2">Fire (8mp)
+<option value="3">Ice (10mp)
+<option value="4">Lightning (12mp)
+<option value="5">Drain (20mp)
+<option value="6">Fire Storm (30mp)
+<option value="7">Blizzard (35mp)
+<option value="8">Shock (40mp)
+<option value="17">Drain2 (50mp)
+<option value="0">
+<option value="0">-MAGE SPELLS-
+<option value="10">Meteor (80mp)
+<option value="11">Death (80mp)
+</select>
+</td>
+</tr><tr>
+<td><B><center>Battle Stance</center></b></td>
+</tr><tr>
+<td>
+<center>
+<select name="type2" onChange="stanceselect()" style="background-color: #DDDDDD;">
+<option value="1">Aggressive
+<option value="2" selected>Normal
+<option value="3">Defensive
+</select>
+</center>
+</td>
+</tr></table>
+</form>
+
+<form name="items">
+<table border="2"><tr>
+<td colspan="3"><center><B>Item Select</b></center></td>
+</tr><tr>
+<td><input type="radio" name="rad1" onClick=item1() checked></td>
+<td>Heal Cherry</td>
+<td><input type="text" size="3" name="heal1" onFocus="document.items.heal1.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+</tr><tr>
+<td><input type="radio" name="rad2" onClick=item2()></td>
+<td>Heal Potion</td>
+<td><input type="text" size="3" name="heal2" onFocus="document.items.heal2.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+</tr><tr>
+<td><input type="radio" name="rad4" onClick=item4()></td>
+<td>Healing Brew</td>
+<td><input type="text" size="3" name="heal4" onFocus="document.items.heal4.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+</tr><tr>
+<td><input type="radio" name="rad5" onClick=item5()></td>
+<td>Magic Ether</td>
+<td><input type="text" size="3" name="heal5" onFocus="document.items.heal5.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+</tr><tr>
+<td><input type="radio" name="rad6" onClick=item6()></td>
+<td>Magic Potion</td>
+<td><input type="text" size="3" name="heal6" onFocus="document.items.heal6.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+</tr><tr>
+<td><input type="radio" name="rad3" onClick=item3()></td>
+<td>Elixir</td>
+<td><input type="text" size="3" name="heal3" onFocus="document.items.heal3.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+</tr></table>
+</form>
+
+</TD>
+
+</TR>
+<TR>
+
+<TD>
+<center>
+<form name="forma">
+<input type="button" value="               " name="one" onClick=button1()>
+<input type="button" value="             " name="two" onClick=button2()>
+<input type="button" value="             " name="three" onClick=button3()>
+</form>
+</center>
+
+<form name="stats">
+<table border="2">
+<tr>
+<td><B>Name</b>:</td>
+<td colspan="3"><input type="text" size="20" name="gamename" onFocus="document.stats.gamename.blur()" style="border-style: none; background-color: #DDDDDD;"></td>
+</tr><tr>
+<td>Gold</td>
+<td colspan="3">
+<img src="pic/number/b.gif" name="gold0">
+<img src="pic/number/b.gif" name="gold1">
+<img src="pic/number/b.gif" name="gold2">
+<img src="pic/number/b.gif" name="gold3">
+<img src="pic/number/b.gif" name="gold4">
+<img src="pic/number/b.gif" name="gold5">
+<img src="pic/number/b.gif" name="gold6">
+<img src="pic/number/b.gif" name="gold7">
+<img src="pic/number/b.gif" name="gold8">
+<img src="pic/number/b.gif" name="gold9">
+</td>
+</tr><tr>
+<td>Level</td>
+<td>
+<img src="pic/number/b.gif" name="level0">
+<img src="pic/number/b.gif" name="level1">
+<img src="pic/number/b.gif" name="level2">
+</td>
+<td>Strength</td>
+<td>
+<img src="pic/number/b.gif" name="str0">
+<img src="pic/number/b.gif" name="str1">
+<img src="pic/number/b.gif" name="str2">
+</td>
+</tr><tr>
+<td>Endurance</td>
+<td>
+<img src="pic/number/b.gif" name="end0">
+<img src="pic/number/b.gif" name="end1">
+<img src="pic/number/b.gif" name="end2">
+</td>
+<td>Agility</td>
+<td>
+<img src="pic/number/b.gif" name="agi0">
+<img src="pic/number/b.gif" name="agi1">
+<img src="pic/number/b.gif" name="agi2">
+</td>
+</tr><tr>
+<td>Magic</td>
+<td>
+<img src="pic/number/b.gif" name="mag0">
+<img src="pic/number/b.gif" name="mag1">
+<img src="pic/number/b.gif" name="mag2">
+</td>
+<td>Evade</td>
+<td>
+<img src="pic/number/b.gif" name="evd0">
+<img src="pic/number/b.gif" name="evd1">
+<img src="pic/number/percent.gif">
+</td>
+</tr></table>
+</form>
+</TD>
+</TR><TR>
+<TD COLSPAN="3"><font size="1">
+To speed up the game, <a target="top" href="load.html">click here</a> to load all the graphics into your browser cache.  If you find a bug to the game, please <a href="mailto:l_pok@yahoo.com">contact the author</a> and report it.  Feel free to contact the author for questions, comments, and suggestions also.  � Copyright 1999.  Pok-Ching Lee.  All Rights Reserved.
+</font></TD>
+</TR>
+</TABLE>
+</body>
+</html>
