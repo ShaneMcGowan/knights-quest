@@ -2,10 +2,10 @@
 A repo to preserve the Text Based RPG "Knight's Quest" by Pok-Ching Lee from 1999
  
 **Original :**
-https://shanemcgowan.me/knights-quest/Original/knightq.html
+https://shanemcgowan.com/knights-quest/Original/knightq.html
 
 **Edited :**
-https://shanemcgowan.me/knights-quest/Edited/knightq.html
+https://shanemcgowan.com/knights-quest/Edited/knightq.html
 
 
 ## __Original__
